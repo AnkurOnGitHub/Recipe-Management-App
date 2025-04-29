@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Receipe List{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center mt-5 text-warning">Welcome to Receipe List Pages</h1><br><br>
+<div class="container">
+    <div class="row gap-3">
+        {% for singlereceipe in receipes1 %}
+        <div class="col-md-4 d-flex justify-content-center">
+            <div class="card" style="width: 22rem;">
+                {% if singlereceipe.receipe_image %}
+                <img src="{{singlereceipe.receipe_image.url}}" class="card-img-top" alt="...">
+                {% else %}
+                    <img src="{% static 'default.png' %}" class="card-img-top" alt="No Image">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{singlereceipe.receipe_name}}</h5>
+                    <p class="card-text">{{singlereceipe.receipe_description}}</p>
+                    <a href="/delete_receipe/{{singlereceipe.id}}/" class="btn btn-danger">Delete</a>   {% comment %}calling the delete receipe and passing the id dynamically {% endcomment %}
+                    <a href="/update_receipe/{{singlereceipe.id}}/" class="btn btn-success">Update</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

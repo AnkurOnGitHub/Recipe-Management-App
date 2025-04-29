@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% load static %}
+
+
+{% block title %}Receipe Page{% endblock %}
+
+
+{% block content %}
+
+<h1 class="text-center">Receipe page </h1>
+<br>
+<br>
+
+<div class="container">
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Add Receipe</h2>
+        <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Receipe Name</label>
+        <input  type="text" class="form-control" required name="receipe_name">
+        </div>
+
+        <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Receipe Description</label>
+        <textarea class="form-control" required name="receipe_description"></textarea>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="exampleInputPassword2" class="form-label">Receipe Image</label>
+            <input type="file" class="form-control"name="receipe_image" >
+        </div>
+        <button type="submit" class="btn btn-success">Add Receipe</button>
+    </form>
+
+    <br><br>
+
+    <a class="btn btn-primary" href="/receipes_list/" role="button">Veiw All Recipes</a>
+
+</div>
+
+
+
+
+
+
+{% endblock %}
